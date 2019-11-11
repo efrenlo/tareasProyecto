@@ -1,9 +1,64 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Tareas
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+    
+  <ion-list>
+
+    <ion-item-sliding *ngFor="let tarea of tarea">
+      <ion-item-options side="start">
+        <ion-item-options color="secondary">
+          <ion-icon name="checkmark"></ion-icon>
+
+        </ion-item-options>
+      </ion-item-options>
+      <div>
+
+
+        <div *ngIf="tarea.uid == auth.uid">
+          <ion-item>
+            <ion-label>
+              <h2>
+                <strong>{{tarea.titulo}}</strong>
+
+                <ion-chip color="secondary" *ngIf="tarea.active" class="ion-float-right" (click)="update(tarea, false)">
+                  <ion-label>Realizada</ion-label>
+                </ion-chip>
+
+
+
+                <ion-chip color="danger" *ngIf="!tarea.active" class="ion-float-right" (click)="update(tarea, true)">
+                  <ion-label>Pendiente</ion-label>
+
+                </ion-chip>
+
+
+
+              </h2>
+              <h3>{{tarea.descripcion}}</h3>
+
+              <button type="button" (click)="delete(tarea.id)">Eliminar</button>
+
+
+            </ion-label>
+
+
+          </ion-item>
+        </div>
+      </div>
+      <ion-item-options side="end">
+        <ion-item-options color="danger">
+          <ion-icon name="close"></ion-icon>
+        </ion-item-options>
+
+      </ion-item-options>
+
+
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

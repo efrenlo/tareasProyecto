@@ -2,3 +2,22 @@
   max-height: 35vh;
   overflow: hidden;
 }
+
+#salir{
+  
+    position: absolute;
+    border-radius: 5px;
+    bottom: 10px;
+    text-decoration: none;
+ 
+}
+
+#salir {
+  right: 25px;
+}
+
+#salir:hover {
+ 
+  color: red;
+  cursor: pointer;
+}
